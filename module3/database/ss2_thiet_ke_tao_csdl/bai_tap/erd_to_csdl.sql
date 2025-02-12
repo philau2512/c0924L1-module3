@@ -25,7 +25,9 @@ create table sdt_ncc(
 );
 create table don_dat_hang(
 	so_dh int primary key,
-    ngay_dh date
+    ngay_dh date,
+    ma_ncc int,
+    foreign key (ma_ncc) references nha_cung_cap(ma_ncc)
 );
 -- tạo bảng trung gian --
 create table chi_tiet_phieu_xuat(
@@ -52,11 +54,4 @@ create table chi_tiet_don_dat_hang(
     primary key (so_dh, ma_vt),
     foreign key (so_dh) references don_dat_hang(so_dh),
     foreign key (ma_vt) references vat_tu(ma_vat_tu)
-);
-create table cung_cap(
-	ma_ncc int,
-    so_dh int,
-    primary key (ma_ncc, so_dh),
-    foreign key (ma_ncc) references nha_cung_cap(ma_ncc),
-    foreign key (so_dh) references don_dat_hang(so_dh)
 );
