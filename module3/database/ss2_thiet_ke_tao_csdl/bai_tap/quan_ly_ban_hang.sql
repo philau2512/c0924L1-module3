@@ -9,13 +9,13 @@ create table `order`(
 	oID int primary key,
     cID int,
     oDate date,
-    oTotalPrice decimal(10,2) not null,
+    oTotalPrice int,
     foreign key (cID) references customer(cID)
 );
 create table product(
 	pID int primary key,
     pName varchar(100) not null,
-    pPrice decimal(10,2) not null
+    pPrice int
 );
 create table order_detail(
 	oID int,
