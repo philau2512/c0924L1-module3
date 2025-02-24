@@ -37,3 +37,38 @@ and dich_vu.ma_dich_vu not in (
     from hop_dong
     where year(hop_dong.ngay_lam_hop_dong = 2021)
 );
+
+-- 8. Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau. Sử dụng 3 cách --
+-- cách 1:
+select distinct ho_ten from khach_hang;
+
+-- cách 2:
+select ho_ten from khach_hang group by ho_ten;
+
+-- cách 3
+select distinct ho_ten from khach_hang
+union
+select distinct ho_ten from khach_hang;
+
+-- 9. Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
+select 
+	month(hop_dong.ngay_lam_hop_dong) as thang,
+    count(distinct(khach_hang.ma_khach_hang)) as so_luong_khach
+from hop_dong
+join khach_hang on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+where year(hop_dong.ngay_lam_hop_dong) = 2021
+group by month(hop_dong.ngay_lam_hop_dong)
+order by thang;
+
+-- 10. Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm. 
+-- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
+select
+	hop_dong.ma_hop_dong,
+    hop_dong.ngay_lam_hop_dong,
+    hop_dong.ngay_ket_thuc,
+    hop_dong.tien_dat_coc,
+    coalesce(sum(hop_dong_chi_tiet.so_luong),0) as so_luong_dich_vu_di_kem
+from hop_dong
+left join hop_dong_chi_tiet on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
+group by hop_dong.ma_hop_dong
+order by ma_hop_dong;

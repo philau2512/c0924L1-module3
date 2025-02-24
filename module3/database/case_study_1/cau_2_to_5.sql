@@ -36,11 +36,5 @@ left join hop_dong_chi_tiet on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_d
 left join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
 group by
 	khach_hang.ma_khach_hang,
-	khach_hang.ho_ten, 
-    loai_khach.ten_loai_khach, 
-    hop_dong.ma_hop_dong, 
-    dich_vu.ten_dich_vu, 
-    hop_dong.ngay_lam_hop_dong, 
-    hop_dong.ngay_ket_thuc, 
-    dich_vu.chi_phi_thue
+    hop_dong.ma_hop_dong
 order by khach_hang.ma_khach_hang;
