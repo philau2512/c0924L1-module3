@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ss9_tong_quan_web_app/bai_tap/login_web" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ss9_tong_quan_web_app/bai_tap/login_web" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ss9_tong_quan_web_app/bai_tap/web_show_system_time" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ss9_tong_quan_web_app/bai_tap/web_show_system_time" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

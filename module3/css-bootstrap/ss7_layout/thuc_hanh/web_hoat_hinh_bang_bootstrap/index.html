@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hoat Hinh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .video-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+        .video-item {
+            margin-bottom: 15px;
+            display: block;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 400px;
+        }
+        .navbar-nav {
+            width: 100%;
+            justify-content: center;
+        }
+        .title-video {
+            font-weight: bold;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        /* Điều chỉnh header */
+        /* Căn giữa các mục menu và dấu | */
+        .header-menu .navbar-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Giúp menu xuống dòng khi bị thu nhỏ */
+            padding: 10px 0;
+        }
+
+        .header-menu .nav-item {
+            display: flex;
+            align-items: center; /* Căn giữa chữ và dấu | */
+            padding: 0 10px;
+            font-weight: bold;
+        }
+
+        .header-menu .nav-item span {
+            margin-left: 10px; /* Khoảng cách giữa chữ và dấu | */
+            font-weight: normal; /* Giảm độ đậm cho dấu | */
+            color: black; /* Màu dấu | */
+        }
+
+        /* Khi màn hình nhỏ, menu hiển thị dọc và bỏ dấu | */
+        @media (max-width: 768px) {
+            .header-menu .navbar-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-menu .nav-item {
+                padding: 10px 0;
+            }
+            .header-menu .nav-item span {
+                display: none; /* Ẩn dấu | khi menu dọc */
+            }
+        }
+        /* Căn giữa menu */
+        .navbar-nav .nav-item {
+            display: flex;
+            align-items: center; /* Căn giữa chữ và dấu | */
+            padding: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Thêm dấu | giữa các mục menu */
+        .navbar-nav .nav-item:not(:last-child)::after {
+            content: " | ";
+            margin-left: 10px;
+            font-weight: normal;
+            color: black;
+        }
+
+        /* Khi màn hình nhỏ, menu thành cột dọc và bỏ dấu | */
+        @media (max-width: 992px) {
+            .navbar-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            .navbar-nav .nav-item {
+                padding: 10px 5px;
+            }
+            .navbar-nav .nav-item::after {
+                content: "";
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Hàng 1: Logo -->
+<div class="header-top p-3">
+    <a href="#">
+        <img width="70" height="50" src="https://img.icons8.com/clouds/100/spongebob-squarepants.png" alt="spongebob-squarepants"/>
+    </a>
+</div>
+
+<!-- Hàng 2: Menu có Hamburger -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light"">
+    <div class="container">
+        <!-- Nút bấm hiển thị menu khi thu nhỏ -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse justify-content-center" id="menuNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">Phim hoạt hình</li>
+                <li class="nav-item">Phim hoạt hình yêu thích</li>
+                <li class="nav-item">Nhân vật hoạt hình</li>
+                <li class="nav-item">Góp ý</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <!-- Cột danh sách video (bên trái) -->
+            <div class="col-md-4">
+                <div class="video-item">
+                    <img src="https://vcdn1-giaitri.vnecdn.net/2024/06/02/doraemon-1-jpeg-1717343452-2401-1717343726.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=fI-XmWOO7indd3YV-COVXA" alt="Welcome đến với khách sạn Nobi">
+                    <p class="title-video">Welcome đến với khách sạn Nobi - 5,147,528 lượt xem</p>
+                    <p class="name-channel">Channel Fun</p>
+                </div>
+                <div class="video-item">
+                    <img src="https://images.fbox.fpt.vn/wordpress-blog/2023/10/phim-hoat-hinh-doraemon.jpg" alt="Suneo khổng lồ">
+                    <p class="title-video">Suneo khổng lồ - 5,147,528 lượt xem</p>
+                    <p class="name-channel">Doraemon Vietsub</p>
+                </div>
+                <div class="video-item">
+                    <img src="https://aeonmall-review-rikkei.cdn.vccloud.vn/public/wp/16/events/oupxSKbVblEGhK8B7yCGwVqsTOyj7udsT4qwJHR5.jpg" alt="Còi điều khiển nhân vật">
+                    <p class="title-video">Còi điều khiển nhân vật - 5,147,528 lượt xem</p>
+                    <p class="name-channel">Doraemon Vietsub</p>
+                </div>
+                <div class="video-item">
+                    <img src="https://admin.vov.gov.vn/UploadFolder/KhoTin/Images/UploadFolder/VOVVN/Images/sites/default/files/styles/large/public/2024-05/doraemon_5.jpg" alt="Chiếc máy tạo keo bông">
+                    <p class="title-video">Chiếc máy tạo keo bông - 5,147,528 lượt xem</p>
+                    <p class="name-channel">Doraemon Vietsub</p>
+                </div>
+            </div>
+
+            <!-- Cột video chính (bên phải) -->
+            <div class="col-md-8">
+                <div class="video-container">
+                    <h2>Doraemon Ep 430 - Tớ là Mari đây & Gây chú ý</h2>
+                    <iframe src="https://www.youtube.com/embed/example_video" frameborder="0" allowfullscreen></iframe>
+                    <p><strong>Tác giả:</strong> Bộ phim kể về câu chuyện Thạch Sanh...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="page-footer text-center bg-light p-3 mt-4">@2017 - Thiết kế web bởi trang hoathinhvn.net</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
