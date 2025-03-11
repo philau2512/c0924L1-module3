@@ -9,7 +9,9 @@
 <body>
 <c:import url="../layout/header.jsp"/>
 <h1>Danh sách sinh viên</h1>
-<table>
+<a href="/students?action=create">Thêm mới</a>
+<p>${param.mess}</p>
+<table class="table table-striped">
     <tr>
         <th>STT</th>
         <th>Name</th>
