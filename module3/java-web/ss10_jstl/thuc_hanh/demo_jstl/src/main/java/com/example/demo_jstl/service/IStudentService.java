@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface IStudentService {
     List<Student> findAll();
+    List<Student> searchByName(String studentName);
     boolean add(Student student);
+    boolean deleteById(int id);
 }

@@ -12,7 +12,7 @@
 </p>
 
 <p>
-    <a href="/products?action=find">Find a product</a>
+    <a href="/products?action=find">Find a product by name</a>
 </p>
 
 <table border="1" style="border-collapse: collapse">

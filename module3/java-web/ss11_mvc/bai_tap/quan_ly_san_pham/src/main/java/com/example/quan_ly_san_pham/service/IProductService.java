@@ -10,6 +10,7 @@ public interface IProductService {
     boolean addProduct(Product product);
 
     Product findProductById(int id);
+
     List<Product> findProductByName(String name);
 
     boolean updateProductById(int id, Product product);

@@ -29,14 +29,36 @@ public class StudentController extends HttpServlet {
                 break;
             case "delete":
                 // xoá
+                deleteById(req, resp);
                 break;
-            case "update":
-                // update
+            case "search":
+                searchByName(req, resp);
+            case "edit":
+                // showFormEdit()
                 break;
             default:
                 // trả về list
                 showList(req, resp);
         }
+    }
+
+    private void searchByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String searchName = req.getParameter("searchName");
+        List<Student> searchList = studentService.searchByName(searchName);
+        req.setAttribute("studentList", searchList);
+        req.setAttribute("searchName", searchName);
+
+        req.getRequestDispatcher("/views/student/list.jsp").forward(req, resp);
+    }
+
+    private void deleteById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int deleteId = Integer.parseInt(req.getParameter("deleteId"));
+        boolean isDeleteSuccess = studentService.deleteById(deleteId);
+        String mess = "Delete not success";
+        if (isDeleteSuccess) {
+            mess = "Delete success";
+        }
+        resp.sendRedirect("/students?mess=" + mess);
     }
 
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -80,12 +102,12 @@ public class StudentController extends HttpServlet {
         int classId = Integer.parseInt(req.getParameter("classId"));
         Student student = new Student(id, name, gender, score, classId);
         boolean flag = studentService.add(student);
-        if (flag){
+        if (flag) {
             // thêm mới thành công
             resp.sendRedirect("/students?mess=Created succes");
-        }else {
+        } else {
             // không thaành công trả vè form thêm mới
-            showFormCreate(req,resp);
+            showFormCreate(req, resp);
         }
     }
 }

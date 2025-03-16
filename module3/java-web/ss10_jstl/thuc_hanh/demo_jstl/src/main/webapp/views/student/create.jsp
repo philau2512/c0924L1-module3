@@ -9,6 +9,31 @@
 <html>
 <head>
     <title>Title</title>
+    <c:import url="../layout/labrary.jsp"/>
+    <style>
+        input, button, select {
+            margin-top: 10px;
+        }
+
+        .form {
+            margin-top: 20px;
+            width: 300px;
+            background-color: lightgrey;
+            margin-left: 500px;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            background-color: green;
+            margin-left: 50px;
+        }
+    </style>
 </head>
 <body>
 <h1>Thêm mới</h1>

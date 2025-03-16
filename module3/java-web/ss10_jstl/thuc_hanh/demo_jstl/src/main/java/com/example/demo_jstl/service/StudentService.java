@@ -18,8 +18,18 @@ public class StudentService implements IStudentService {
     }
 
     @Override
+    public List<Student> searchByName(String studentName) {
+        return studentRepository.seachByName(studentName);
+    }
+
+    @Override
     public boolean add(Student student) {
-        studentRepository.add(student);
-        return true;
+        //validate trước khi add
+        return studentRepository.add(student);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        return studentRepository.deleteById(id);
     }
 }
