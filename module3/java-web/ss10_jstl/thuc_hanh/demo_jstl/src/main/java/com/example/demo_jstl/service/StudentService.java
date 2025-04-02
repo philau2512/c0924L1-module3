@@ -1,5 +1,6 @@
 package com.example.demo_jstl.service;
 
+import com.example.demo_jstl.dto.StudentDto;
 import com.example.demo_jstl.model.Student;
 import com.example.demo_jstl.repository.IStudentRepository;
 import com.example.demo_jstl.repository.StudentRepository;
@@ -12,14 +13,14 @@ public class StudentService implements IStudentService {
     private IStudentRepository studentRepository = new StudentRepository();
 
     @Override
-    public List<Student> findAll() {
+    public List<StudentDto> findAll() {
         // gọi repository lấy dữ liệu
         return studentRepository.findAll();
     }
 
     @Override
-    public List<Student> searchByName(String studentName) {
-        return studentRepository.seachByName(studentName);
+    public List<StudentDto> search(String studentName, String classId) {
+        return studentRepository.seach(studentName, classId);
     }
 
     @Override

@@ -1,6 +1,10 @@
 package com.example.demo_jstl.controller;
 
+import com.example.demo_jstl.dto.StudentDto;
+import com.example.demo_jstl.model.ClassCG;
 import com.example.demo_jstl.model.Student;
+import com.example.demo_jstl.service.ClassCGService;
+import com.example.demo_jstl.service.IClassCGService;
 import com.example.demo_jstl.service.IStudentService;
 import com.example.demo_jstl.service.StudentService;
 
@@ -15,6 +19,7 @@ import java.util.List;
 @WebServlet(name = "StudentServlet", urlPatterns = "/students")
 public class StudentController extends HttpServlet {
     private IStudentService studentService = new StudentService();
+    private IClassCGService classCGService = new ClassCGService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,7 +49,8 @@ public class StudentController extends HttpServlet {
 
     private void searchByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String searchName = req.getParameter("searchName");
-        List<Student> searchList = studentService.searchByName(searchName);
+        String classId = req.getParameter("classId");
+        List<StudentDto> searchList = studentService.search(searchName, classId);
         req.setAttribute("studentList", searchList);
         req.setAttribute("searchName", searchName);
 
@@ -62,12 +68,16 @@ public class StudentController extends HttpServlet {
     }
 
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<ClassCG> classCGList = classCGService.findAll();
+        req.setAttribute("classCGList", classCGList);
         req.getRequestDispatcher("/views/student/create.jsp").forward(req, resp);
     }
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Student> studentList = studentService.findAll();
+        List<StudentDto> studentList = studentService.findAll();
+        List<ClassCG> classCGList = classCGService.findAll();
         req.setAttribute("studentList", studentList);
+        req.setAttribute("classList", classCGList);
         req.getRequestDispatcher("views/student/list.jsp").forward(req, resp);
     }
 

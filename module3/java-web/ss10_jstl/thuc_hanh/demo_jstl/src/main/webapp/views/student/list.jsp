@@ -15,6 +15,12 @@
     <input hidden="hidden" name="action" value="search">
     <input value="${searchName}" class="form-control form-control-sm w-25" name="searchName"
            placeholder="Nhập tên cần tìm kiếm">
+    <select name= "classId" class="form-control form-control-sm w-25" aria-label=".form-select-sm example">
+        <option selected value="">---Chọn lớp---</option>
+        <c:forEach items="${classList}" var="cls">
+            <option value="${cls.getId()}">${cls.getClassName()}</option>
+        </c:forEach>
+    </select>
     <button class="btn btn-primary btn-sm">Tìm kiếm</button>
 </form>
 
@@ -61,7 +67,7 @@
                     </c:otherwise>
                 </c:choose>
             </td>
-            <td>${student.getClassId()}</td>
+            <td>${student.getClassName()}</td>
             <td>
                 <button onclick="thongTinXoa(`${student.getId()}`, `${student.getName()}`)" type="button"
                         class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">

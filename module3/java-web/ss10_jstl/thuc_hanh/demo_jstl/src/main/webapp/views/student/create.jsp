@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -9,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <c:import url="../layout/labrary.jsp"/>
+    <c:import url="../layout/library.jsp"/>
     <style>
         input, button, select {
             margin-top: 10px;
@@ -45,9 +46,9 @@
     <input type="number" name="score" placeholder="nhập điểm">
     <select name="classId">
         <option value="0">--chon lớp---</option>
-        <option value="1">C05</option>
-        <option value="2">C06</option>
-        <option value="3">C07</option>
+        <c:forEach var="cls" items="${classCGList}">
+            <option value="${cls.id}">${cls.getClassName()}</option>
+        </c:forEach>
     </select>
     <button>Lưu</button>
 </form>
